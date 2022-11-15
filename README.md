@@ -2,8 +2,13 @@
 simple infrastructure monitoring
 
 ## How will this work?
-A system service will periodically gather metrics for CPU, disk utilization, and memory utilization.
-Might also be nice to search for IOWAIT and/or inode utilization
+A systemd service will periodically gather metrics for CPU, disk utilization, and memory utilization
+Specifically, the metrics provided will include:
+load average (along with  number of cores)
+CPU utilization (acute)
+Free memory and total memory (making this human readable should be handled by the metrics recipient)
+Disk space used and total disk space (per device, aggregates to be handled by the server)
+
 
 Configuration options will include:
 1) Where to POST metrics
@@ -13,4 +18,4 @@ Configuration options will include:
 5) Frequency of metric collection
 6) Frequency of sending metrics
 
-It might be useful to parse information from sysstat related tools ultimately, but initially this will only measure disk utilization, memory utilization, and CPU load
+None of this should depend on system utilities. More research would be required to measure single threading issues and the like
