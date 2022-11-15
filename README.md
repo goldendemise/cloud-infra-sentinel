@@ -7,7 +7,7 @@ Specifically, the metrics sent in JSON format will include:
 load average(`os.loadavg()`) along with  number of cores (via `os.cpus().length`)
 CPU utilization (acute)
 Free memory and total memory (making this human readable should be handled by the metrics recipient. from `os.freemem()` and `os.totalmem()` respectively)
-Disk space used and total disk space (per device, aggregates to be handled by the server)
+Disk space used and total disk space (per device, aggregates to be handled by the server. probably some combination of system `df` and `du`, probably with a separate `-h` for each returned as well)
 
 
 Configuration options will include:
@@ -18,4 +18,4 @@ Configuration options will include:
 5) Frequency of metric collection
 6) Frequency of sending metrics
 
-None of this should depend on system utilities. More research would be required to measure single threading issues and the like
+
